@@ -12,9 +12,7 @@ export class Form extends Component {
   };
 
   onSubmit = (e) => {
-    if (!this.state.title || !this.state.about) alert ("Enter Title & About")
-    else alert("Title: "+this.state.title+"; About: "+this.state.about+".");
-
+    this.props.addArt (this.state.title, this.state.about);
     e.preventDefault();
   };
 

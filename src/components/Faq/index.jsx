@@ -15,10 +15,18 @@ const defaultState = [
     },
 ]
 
+
+
 export class Faq extends Component {
   state = {
     articles: defaultState,
   };
+
+  addArticle = (title,about) => {
+   if (title && about) {
+     this.setState({articles: [...this.state.articles, {title, about}]});
+   }
+  }
 
   render() {
     return (
@@ -26,7 +34,7 @@ export class Faq extends Component {
         {this.state.articles.map((article) => (
           <ItemArticle id={article.id} article={article} />
         ))}
-        <Form />
+        <Form addArt = {this.addArticle}/>
       </div>
     );
   }
