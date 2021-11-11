@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import ItemArticle from "./ItemArticle";
 import Form from "./Form";
+import { useState } from "react/cjs/react.development";
+import Articles from './Articles';
+
 
 const defaultState = [
     {
@@ -15,29 +18,23 @@ const defaultState = [
     },
 ]
 
+export const ArticleContext = React.createContext();
+
+function Faq () {
+const [articles, setArticles] = useState(defaultState);
 
 
-export class Faq extends Component {
-  state = {
-    articles: defaultState,
-  };
 
-  addArticle = (title,about) => {
-   if (title && about) {
-     this.setState({articles: [...this.state.articles, {title, about}]});
-   }
-  }
 
-  render() {
     return (
-      <div>
-        {this.state.articles.map((article) => (
-          <ItemArticle id={article.id} article={article} />
-        ))}
-        <Form addArt = {this.addArticle}/>
-      </div>
+      <ArticleContext.Provider value={[articles, setArticles]}>
+        <div>
+          <Articles />
+          <Form />
+        </div>
+      </ArticleContext.Provider>
     );
-  }
+  
 }
 
 export default Faq;
