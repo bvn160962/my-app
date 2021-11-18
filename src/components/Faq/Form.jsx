@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import styles from './faq.module.scss'
 import {ArticleContext} from './index'
-import useForm from "./useForm";
+import useForm from '../../hooks/useForm';
 
 
 function validator(values) {
